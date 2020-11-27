@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Site Metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="cmapp home page">
+    <meta name="author" content="DSAIL-agriculture-team">
+
+    <!-- Site Icons -->
+    <!--<link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="#" /> -->
+
+       
+    <title>CMAPP | Dashboard</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css" />
+     <!-- jQuery Circle-->
+    <link rel="stylesheet" href="../assets/css/grasp_mobile_progress_circle-1.0.0.min.css">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet" href="../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="../assets/css/fontastic.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../assets/css/style.default.css" id="theme-stylesheet"> 
+ 
+  </head>
+  <body>
+
+       <!-- Side Navbar -->
+    <nav class="side-navbar">
+      <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+          <!-- User Info-->
+          <div class="sidenav-header-inner text-center"><img src="../images/web/logo.PNG">
+          </div>
+          <hr>
+          <!-- Small Brand information, appears on minimized sidebar-->
+          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong><i style="color: #1c4f1b;">CMAPP</i></strong></a></div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+          <ul id="side-main-menu" class="side-menu list-unstyled">                  
+            <li class="active"><a href="index.html" > <i class="icon-home"></i>Home</a></li>
+           
+             <li><a href="#dropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-leaf"></i>Diseases </a>
+              <ul id="dropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="common_diseases.html">Common Diseases</a></li>
+                <li><a href="disease_management.html">Preventive / Curative measures</a></li>
+                <li hidden="true"><a href="#">Chemical Stores</a></li>
+              </ul>
+            </li>
+            <li><a href="labour_management.html"> <i class="fa fa-wrench"></i>Labour</a></li>
+            <li ><a href="fertilizer.html"> <i class="fa fa-flask"></i>Fertilizer</a></li>
+            <li ><a href="chemical_stores.html"> <i class="fa fa-map-marker"></i>Chemical Stores</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page">
+     
+       <!-- navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+                  <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">CMAPP DASHBOARD <i class="fa fa-tachometer" style="padding-left: 5px;"></i></strong></div></a></div>
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+        
+                <!-- Log out-->
+                <li class="nav-item"><a href="#" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link logout">Reset password <i class="fa fa-key" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <hr>      <!-- Header Section-->
+      <section class="dashboard-header section-padding">
+        <div class="container-fluid">
+          <div class="row d-flex align-items-md-stretch">
+           
+            <!-- Pie Chart-->
+            <div class="col-lg-6 col-md-12">
+              <div class="card project-progress">
+                <h2 class="display h4"></h2>
+                <p></p>
+                <div class="pie-chart">
+                  <canvas id="pieChart" width="300" height="300"> </canvas>
+                </div>
+              </div>
+            </div>
+            <!-- Line Chart -->
+            <div class="col-lg-6 col-md-12 flex-lg-last flex-md-first align-self-baseline">
+              <div class="card sales-report">
+                <h2 class="display h4"></h2>
+                <div class="line-chart">
+                  <canvas id="lineCahrt"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       
+    </div>
+     
+    <!-- JQUERY -->
+    <script src="../vendor/jquery/jquery.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <script src="../assets/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+
+    <script src="../vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <!-- Chart.JS -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <script src="../vendor/jquery-validation/jquery.validate.min.js"></script>
+
+    <script src="../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="../assets/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="../assets/js/front.js"></script>  
+  </body>
+</html>
