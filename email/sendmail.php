@@ -5,8 +5,8 @@
     //Send Mail function
     function send_email($mj_from_email, $mj_from_name, $mj_to_email, $mj_to_name, $mj_subject, $mj_text, $mj_html){
 
-        $mj_public_key = 'dd4c0a8351f16622dcc1a7208d5b12ec';
-        $mj_private_key = 'c7269d0072a31ba952cbafdbc300e116';
+        $mj_public_key = '';
+        $mj_private_key = '';
 
         $mj = new \Mailjet\Client($mj_public_key, $mj_private_key,true,['version' => 'v3.1']);
         $body = [
