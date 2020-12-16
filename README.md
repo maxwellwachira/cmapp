@@ -1,12 +1,12 @@
 # cmapp
 
-This is the home page/landing page. <img  src = "images/read_me/login.PNG">
+This is the home page/landing page.<br> 
 This is the about page
-This is the login page
-This is the signup page
-This is the contact page
-This is a screenshot showing the information that is send to our email (cmappdsail@gmail.com) from the contact page
-This is the forgot password page. 
+This is the login page. http://139.59.142.183/cmapp/auth/login.php <br> <img  src = "images/read_me/login.PNG"> <br> <br>
+This is the signup page. http://139.59.142.183/cmapp/signup.php <br> <img  src = "images/read_me/signup.PNG">  <br> <br>
+This is the contact page. http://139.59.142.183/cmapp/contact.php <br> 
+This is a screenshot showing the information that is send to our email (cmappdsail@gmail.com) from the contact page <br>
+This is the forgot password page. http://139.59.142.183/cmapp/auth/forgot_password.php <br> <img  src = "images/read_me/forgot_password.PNG">  <br> <br>
 This is a screenshot showing the reset password link sent to the manager's email address for password recovery
 The image below shows the password reset form
 This is the dashboard landing page. It has a summary of the total number of employees as well as the total number of tasks
