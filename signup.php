@@ -167,7 +167,7 @@ include 'auth/access_log.php';
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>  
 
-    <script src="assets/js/signup.js"></script>
+    <script src="auth/signup.js"></script>
     
 </body>
 </html>

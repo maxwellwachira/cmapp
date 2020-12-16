@@ -11,7 +11,7 @@ function register_submit(){
 	// pull in values/variables
 	var name = $("#name").val();
 	var email = $("#email").val();
-	var a_type = $("#type").val();
+	//var a_type = $("#type").val();
 	var password = $("#password").val();
 	var password_repeat = $("#confirm_password").val();
 
@@ -23,12 +23,7 @@ function register_submit(){
 	} 
 	else {
 
-		if(Number(a_type) == 0){
-			$('#op').html('<div class="alert alert-danger animated bounce" role="alert"><i class="fa fa-warning animated swing infinite"></i> Please select Acount type</div>');
-
-		}else{
-		
-		    if (password != password_repeat) {
+			if (password != password_repeat) {
 
 		    	$('#op').html('<div class="alert alert-danger animated bounce" role="alert"><i class="fa fa-warning animated swing infinite"></i> Passwords do not match</div>');
 
@@ -44,7 +39,6 @@ function register_submit(){
 			    	var reg_data = {
 				        	username:name,
 				        	email:email,
-				        	a_type:a_type,
 				        	password:password
 				        };
 
@@ -93,11 +87,9 @@ function register_submit(){
 
 		    	}
 
-		    	} 
-
-			} 
+		    } 
+		}
 	}
-}
 
 $(document).ready(function() {
 

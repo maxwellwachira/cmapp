@@ -114,9 +114,9 @@ require '../../../vendor/mailjet/vendor/autoload.php';
                     $mj_subject = 'New Account';
                     $mj_text = "Hello " . strtoupper($mj_to_name) . " .\n";
                     $mj_text .= "Your Farm manager, ".strtoupper($farm_manager_name). " has created an account for you.\n";
-                    $mj_text .= "To login to you account, visit the link http://localhost/cmapp/auth/login.php. Your email address is ".$email."  and password is ".$new_pwd."\n";
-                    $mj_text .= "Once you have logged in, you can change your password by clicking the change password button on the top right of the dashboard\n";
-                    $mj_text .= "To learn more about cmapp, visit the following link http://localhost/cmapp/blog/first_blog.php\n";
+                    $mj_text .= "Your email address is ".$email."  and password is ".$new_pwd."\n";
+                    $mj_text .= "Download and install CMapp mobile application. Use the above Credentials to log in. Once you have logged in, you can change your password by clicking the change password\n";
+                    $mj_text .= "To learn more about cmapp, visit the following link http://139.59.142.183/cmapp/about.php\n";
                     $mj_html = '';
 
                     send_email($mj_from_email, $mj_from_name, $mj_to_email, $mj_to_name, $mj_subject, $mj_text, $mj_html);

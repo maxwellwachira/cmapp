@@ -71,7 +71,7 @@ $con = $database->getConnection_mysqli();
             <li><a href="tasks.php"> <i class="fa fa-wrench"></i>Tasks</a></li>
              <li class="active"><a href="#dropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-leaf"></i>Diseases </a>
               <ul id="dropdownDropdown" class="collapse list-unstyled ">
-                <li class="active"><a href="common_diseases.html">Common Diseases</a></li>
+                <li class="active"><a href="common_diseases.php">Common Diseases</a></li>
                 <li><a href="disease_management.php">Preventive / Curative measures</a></li>
                 <li hidden="true"><a href="#">Chemical Stores</a></li>
               </ul>
@@ -90,7 +90,7 @@ $con = $database->getConnection_mysqli();
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">CMAPP DASHBOARD <i class="fa fa-tachometer" style="padding-left: 5px;"></i></strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
         

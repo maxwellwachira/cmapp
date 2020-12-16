@@ -91,7 +91,7 @@ if(isset($_POST['email']) && isset($_POST['email']) != "")
 		    	    $mj_subject = 'Password Reset';
 		    	    $mj_text = "Hello " . strtoupper($mj_to_name) . " .\n";
 		    	    $mj_text .= "Use the link below to reset your password. The link shall expire in 3 hours .\n";
-		    	    $mj_text .= "Password reset link : http://localhost/cmapp/auth/reset.php?rst=".$serial.".\n";
+		    	    $mj_text .= "Password reset link : http://139.59.142.183/cmapp/auth/reset.php?rst=".$serial.".\n";
 		    	    $mj_html = '';
 
 		    	    send_email($mj_from_email, $mj_from_name, $mj_to_email, $mj_to_name, $mj_subject, $mj_text, $mj_html);

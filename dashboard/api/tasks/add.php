@@ -113,9 +113,8 @@ require '../../../vendor/mailjet/vendor/autoload.php';
             $mj_text .= "TASK: " .strtoupper($task). ".\n";
             $mj_text .= "START DATE: " .strtoupper($start_date). ".\n";
             $mj_text .= "COMPLETION DATE: " .strtoupper($completion_date). ".\n";
-            $mj_text .= "To login to you account, visit the link http://localhost/cmapp/auth/login.php. Your email address is ".$email." ";
-            $mj_text .= "Once you have logged in, you will find more information concerning your task. \n";
-            $mj_text .= "To learn more about cmapp, visit the following link http://localhost/cmapp/blog/first_blog.php\n";
+            $mj_text .= "DESCRIPTION: " .strtoupper($description). ".\n";
+            $mj_text .= "To learn more about cmapp, visit the following link http://139.59.142.183/cmapp/about.php\n";
             $mj_html = '';
 
             send_email($mj_from_email, $mj_from_name, $mj_to_email, $mj_to_name, $mj_subject, $mj_text, $mj_html);

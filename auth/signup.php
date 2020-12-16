@@ -12,14 +12,11 @@ date_default_timezone_set("Africa/Nairobi");
 // include database 
 include_once 'db.php';
 // include user class 
-include_once 'user_class.php';
 
 // instantiate database and user_class objects
 $database = new Database();
 $db = $database->getConnection_pdo();
 
-$user = new User($db);
-  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
@@ -27,7 +24,7 @@ $data = json_decode(file_get_contents("php://input"));
 if(
     !empty($data->username) &&
     !empty($data->email) &&
-    !empty($data->a_type) &&
+    //!empty($data->a_type) &&
     !empty($data->password) 
 ){
 
@@ -64,15 +61,40 @@ if(
 
 		}else{
 
-			// set user property values
-		    $user->username = $data->username;
-		    $user->email = $data->email;
-		    $user->password = password_hash($data->password, PASSWORD_DEFAULT);
-		    $user->type = $data->a_type;
-		    $user->created_at = date('Y/m/d H:i:s');
+			  $query = "INSERT INTO users (username, email, password, type, created_at, deleted)
+            VALUES
+                (?, ?, ?, ?, ?, ?)";
+  
+		    // prepare query
+		    $stmt = $db->prepare($query);
+
+		    // sanitize
+		    $username=htmlspecialchars(strip_tags($data->username));
+		    $email=htmlspecialchars(strip_tags($data->email));
+		    $password=htmlspecialchars(strip_tags($data->password));
+		 
+
+		    $password = $data->password;
+		    $type = '1';
+		    $created_at = date('Y/m/d H:i:s');
+		    $deleted = 0;
+		  
+		    
+		  
+		    // bind values
+		    $stmt->bindParam(1, $username);
+		    $stmt->bindParam(2, $email);
+		    $stmt->bindParam(3, $password);
+		    $stmt->bindParam(4, $type);
+		    $stmt->bindParam(5, $created_at);
+		    $stmt->bindParam(6, $deleted);
+		  
+		    
+
+			
 
 		    // create the user
-		    if($user->create()){
+		    if($stmt->execute()){
 		  
 		        // set response code - 201 created
 		        //http_response_code(201);
