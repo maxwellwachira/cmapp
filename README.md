@@ -1,6 +1,6 @@
 # cmapp
 
-This is the home page/landing page. <img  src = "images/read_me/login">
+This is the home page/landing page. <img  src = "images/read_me/login.PNG">
 This is the about page
 This is the login page
 This is the signup page
