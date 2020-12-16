@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: ../auth/login.php");
+    exit;
+}
+
+$page_name = 'Disease management';
+
+include '../auth/access_log.php';
+// include Database connection file 
+$con = $database->getConnection_mysqli();
+        
+?>
 <!DOCTYPE html>
 <html>
   <head> 
@@ -17,7 +33,7 @@
     <!--<link rel="shortcut icon" href="#" type="image/x-icon" />
     <link rel="apple-touch-icon" href="#" /> -->
        
-    <title>CMAPP | Dashboard</title>
+    <title>CMAPP | Disease Management</title>
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.css" />
     <!-- Bootstrap CSS -->
@@ -44,23 +60,23 @@
           </div>
           <hr>
           <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong><i style="color: #1c4f1b;">CMAPP</i></strong></a></div>
+          <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong><i style="color: #1c4f1b;">CMAPP</i></strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li ><a href="index.html" > <i class="icon-home"></i>Home</a></li>
-           
+            <li ><a href="index.php" > <i class="icon-home"></i>Home</a></li>
+            <li ><a href="employee.php" > <i class="icon-user"></i>Employees</a></li>
+            <li><a href="tasks.php"> <i class="fa fa-wrench"></i>Tasks</a></li>
              <li class="active"><a href="#dropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-leaf"></i>Diseases </a>
               <ul id="dropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="common_diseases.html">Common Diseases</a></li>
+                <li><a href="common_diseases.php">Common Diseases</a></li>
                 <li class="active"><a href="disease_management.html">Preventive / Curative measures</a></li>
                 <li hidden="true"><a href="#">Chemical Stores</a></li>
               </ul>
             </li>
-            <li><a href="labour_management.html"> <i class="fa fa-wrench"></i>Labour</a></li>
-            <li ><a href="fertilizer.html"> <i class="fa fa-flask"></i>Fertilizer</a></li>
-            <li ><a href="chemical_stores.html"> <i class="fa fa-map-marker"></i>Chemical Stores</a></li>
+            <li ><a href="fertilizer.php"> <i class="fa fa-flask"></i>Fertilizer</a></li>
+            <li ><a href="chemical_stores.php"> <i class="fa fa-map-marker"></i>Chemical Stores</a></li>
           </ul>
         </div>
       </div>
@@ -78,8 +94,8 @@
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
         
                 <!-- Log out-->
-                <li class="nav-item"><a href="#" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link logout">Reset password <i class="fa fa-key" aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a href="../auth/logout.php" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="../auth/reset_pwd.php" class="nav-link logout">Reset password <i class="fa fa-key" aria-hidden="true"></i></a></li>
               </ul>
             </div>
           </div>

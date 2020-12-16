@@ -1,8 +1,25 @@
+<?php
+
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: ../auth/login.php");
+    exit;
+}
+
+$page_name = 'Chemcal Stores';
+
+include '../auth/access_log.php';
+// include Database connection file 
+$con = $database->getConnection_mysqli();
+        
+?>
+
 <!DOCTYPE html>
 <html>
-  <head> 
-
-    <meta charset="utf-8">
+<head>
+	  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Mobile Metas -->
@@ -16,9 +33,9 @@
     <!-- Site Icons -->
     <!--<link rel="shortcut icon" href="#" type="image/x-icon" />
     <link rel="apple-touch-icon" href="#" /> -->
-       
-    <title>CMAPP | Dashboard</title>
-    <!-- Font Awesome CSS -->
+
+	<title>CMAPP | Chemical Stores</title>
+	<!-- Font Awesome CSS -->
     <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css" />
@@ -29,14 +46,32 @@
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="../assets/css/fontastic.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../assets/css/style.default.css" id="theme-stylesheet"> 
-    <!-- CRUD CSS -->
-    <link rel="stylesheet" href="../assets/css/style.crud.css">
- 
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/css/style.default.css" id="theme-stylesheet">
+    <!--leaflet-->
+    <link rel="stylesheet" href="../vendor/leaflet/leaflet.css" /> 
 
-       <!-- Side Navbar -->
+    <style type="text/css">
+      html, body, .page {
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        /* height of .navbar, customize with @navbar-height variable */
+        padding-top: 45px;
+      }
+      .navbar {
+        min-height: 45px;
+      }
+      #mapid {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: auto;
+      }
+    </style>
+</head>
+<body>
+
+	    <!-- Side Navbar -->
     <nav class="side-navbar">
       <div class="side-navbar-wrapper">
         <!-- Sidebar Header    -->
@@ -46,23 +81,23 @@
           </div>
           <hr>
           <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong><i style="color: #1c4f1b;">CMAPP</i></strong></a></div>
+          <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong><i style="color: #1c4f1b;">CMAPP</i></strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li ><a href="index.html" > <i class="icon-home"></i>Home</a></li>
-           
+            <li ><a href="index.php" > <i class="icon-home"></i>Home</a></li>
+            <li ><a href="employee.php" > <i class="icon-user"></i>Employees</a></li>
+            <li><a href="tasks.php"> <i class="fa fa-wrench"></i>Tasks</a></li>
              <li><a href="#dropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-leaf"></i>Diseases </a>
               <ul id="dropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="common_diseases.html">Common Diseases</a></li>
-                <li><a href="disease_management.html">Preventive / Curative measures</a></li>
+                <li><a href="common_diseases.php">Common Diseases</a></li>
+                <li><a href="disease_management.php">Preventive / Curative measures</a></li>
                 <li hidden="true"><a href="#">Chemical Stores</a></li>
               </ul>
             </li>
-            <li class="active"><a href="labour_management.html"> <i class="fa fa-wrench"></i>Labour</a></li>
-            <li ><a href="fertilizer.html"> <i class="fa fa-flask"></i>Fertilizer</a></li>
-            <li ><a href="chemical_stores.html"> <i class="fa fa-map-marker"></i>Chemical Stores</a></li>
+            <li><a href="fertilizer.php"> <i class="fa fa-flask"></i>Fertilizer</a></li>
+            <li class="active"><a href="chemical_stores.php"> <i class="fa fa-map-marker"></i>Chemical Stores</a></li>
           </ul>
         </div>
       </div>
@@ -80,18 +115,17 @@
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
         
                 <!-- Log out-->
-                <li class="nav-item"><a href="#" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link logout">Reset password <i class="fa fa-key" aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a href="../auth/logout.php" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="../auth/reset.php" class="nav-link logout">Reset password <i class="fa fa-key" aria-hidden="true"></i></a></li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-      <hr>      <!-- Header Section-->
-      <section style="padding-top: 30px"></section>
-       
-      <div id="app"></div>
-       
+      <hr>
+      
+        <div id="mapid"></div>
+      
     </div>
      
     <!-- JQUERY -->
@@ -113,16 +147,43 @@
 
     <script src="../assets/js/charts-home.js"></script>
     <!-- Main File-->
-    <script src="../assets/js/front.js"></script>  
+    <script src="../assets/js/front.js"></script> 
 
-    <!-- Labour Management CRUD -->
-    <script src="app/app.js"></script> 
-    <script src="app/workers/read-workers.js"></script>
-    <script src="app/workers/create-worker.js"></script>
-    <script src="app/workers/read-one-worker.js"></script>
-    <script src="app/workers/update-workers.js"></script>
-    <script src="app/workers/delete-worker.js"></script>
-    <script src="app/workers/workers.js"></script>
-    <script src="app/workers/search-workers.js"></script>
-  </body>
+    <!--leaflet-->
+    <script src="../vendor/leaflet/leaflet.js"></script> 
+
+</body>
 </html>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $.ajax({
+      url:"http://localhost/cmapp/dashboard/api/location/read_location.php",  
+      method:"post", 
+      data:{},  
+      dataType:"text",  
+      success:function(data)  
+      { 
+        console.log(data);  
+        var map = L.map('mapid').setView([-0.42013, 36.94759], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+         }).addTo(map);
+        var result = JSON.parse(data);
+        $.each(result.location, function(key, val) {
+          
+
+          L.marker([val.lat, val.long]).addTo(map)
+            .bindPopup(val.name)
+            .openPopup();
+           console.log(val.name); 
+
+        });
+
+      }
+  });
+
+  });
+</script>

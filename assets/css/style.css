@@ -1679,7 +1679,7 @@ ul.bottom_menu li {
 }
 
 section.inner_banner {
-    min-height: 125px;
+    min-height: 90px;
     background: #002147;
 }
 
@@ -1780,7 +1780,7 @@ section.inner_banner h3 {
 }
 
 .contact_form button {
-    background: #e0af14;
+    background: #1C4F1B;
     border: none;
     color: #fff;
     width: 200px;
@@ -1795,8 +1795,8 @@ section.inner_banner h3 {
 
 .contact_form button:hover,
 .contact_form button:focus {
-	background: #fff;
-	color: #12385b;
+	background: #e0af14;
+	color: #fff;
 }
 
 .top-margin{

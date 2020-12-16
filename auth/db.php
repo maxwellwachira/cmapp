@@ -9,7 +9,7 @@ class Database{
     public $conn;
   
     // get the database connection
-    public function getConnection(){
+    public function getConnection_pdo(){
   
         $this->conn = null;
   
@@ -22,5 +22,15 @@ class Database{
   
         return $this->conn;
     }
+    public function getConnection_mysqli(){
+        $this->conn = null;
+         try{
+            $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
+            
+        }catch(PDOException $exception){
+            echo "Connection error: " . $exception->getMessage();
+        }
+         return $this->conn;
+
+    }
 }
-?>
