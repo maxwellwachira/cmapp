@@ -9,7 +9,7 @@ This is a screenshot showing the information that is send to our email (cmappdsa
 This is the forgot password page. http://139.59.142.183/cmapp/auth/forgot_password.php <br> <img  src = "images/read_me/forgot_password.PNG">  <br> <br> <br> <br>
 This is a screenshot showing the reset password link sent to the manager's email address for password recovery <br> <br> <br> <br>
 The image below shows the password reset form <br> <br> <br> <br>
-This is the dashboard landing page. It has a summary of the total number of employees as well as the total number of tasks. http://139.59.142.183/cmapp/dashboard/index.php <br> <br> <br> <br>
+This is the dashboard landing page. It has a summary of the total number of employees as well as the total number of tasks. http://139.59.142.183/cmapp/dashboard/index.php <br> <br> <br> <img  src = "images/read_me/dashboard.PNG"> <br> <br><br> <br>
 This is the add employee page. The manager can add, read, update and delete employees. http://139.59.142.183/cmapp/dashboard/employee.php <br> <br> <br> <img  src = "images/read_me/add_employee.PNG"> <br> <br><br> <br>
 The image below is a screenshot showing how farm employees are notified via email when the farm manager creates an account for them. The email contains the the login credentials <br> <br> <br> <br>
 The image below shows the employees report download. The manager can download the employees details in the form of csv, pdf or excel. The manager can also directly print the employees details <br> <br> <br> <img  src = "images/read_me/employee_reports.PNG"> <br> <br><br> <br>
