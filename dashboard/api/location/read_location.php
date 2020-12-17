@@ -1,18 +1,10 @@
 <?php
 
- $host = "localhost";
- $db_name = "cmapp_web";
- $username = "root";
- $password = "Db@maxwell";
+ include("../../../auth/db.php");
 
- // Create connection
-$link = new mysqli($host, $username, $password, $db_name);
-
-// Check connection
-if ($link->connect_error) {
-  die("Connection failed: " . $link->connect_error);
-}
-
+// instantiate database and user_class objects
+$database = new Database();
+$link = $database->getConnection_mysqli();
 
 $query = "SELECT DISTINCT name, longitude, latitude FROM stores";
 

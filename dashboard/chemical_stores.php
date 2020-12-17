@@ -160,7 +160,7 @@ $con = $database->getConnection_mysqli();
   $(document).ready(function(){
 
     $.ajax({
-      url:"http://localhost/cmapp/dashboard/api/location/read_location.php",  
+      url:"http://139.59.142.183/cmapp/dashboard/api/location/read_location.php",  
       method:"post", 
       data:{},  
       dataType:"text",  
